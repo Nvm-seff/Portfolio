@@ -31,9 +31,9 @@ export default function RootLayout({
         {/* Runtime config for static hosting - edit values below or inject via deployment */}
         <Script id="runtime-config" type="application/json" strategy="beforeInteractive">
           {JSON.stringify({
-            emailjsServiceId: '',
-            emailjsTemplateId: '',
-            emailjsPublicKey: '',
+            emailjsServiceId: 'service_1bkfawp',
+            emailjsTemplateId: 'template_oowdhua',
+            emailjsPublicKey: 'BJJ1AFupbzJFt5zx2',
             calendlyUrl: 'https://calendly.com/saifullah-rizw'
           })}
         </Script>
