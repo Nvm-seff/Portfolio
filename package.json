@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "clean": "rm -rf .next node_modules",
-    "deploy": "next build && next export"
+    "deploy": "next build"
   },
   "dependencies": {
     "next": "14.0.0",
