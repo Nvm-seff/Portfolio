@@ -2,9 +2,10 @@
 
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { Mail, Phone, MapPin, Send, Github, Linkedin, Globe, Calendar } from 'lucide-react'
 import emailjs from '@emailjs/browser'
+import { loadRuntimeConfig } from '@/lib/runtimeConfig'
 
 const Contact = () => {
   const ref = useRef(null)
@@ -17,6 +18,11 @@ const Contact = () => {
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [toast, setToast] = useState<{ type: 'success' | 'error'; message: string; visible: boolean }>({ type: 'success', message: '', visible: false })
+  const [runtimeCfg, setRuntimeCfg] = useState<{ emailjsServiceId?: string; emailjsTemplateId?: string; emailjsPublicKey?: string; calendlyUrl?: string }>({})
+
+  useEffect(() => {
+    loadRuntimeConfig().then(setRuntimeCfg).catch(() => setRuntimeCfg({}))
+  }, [])
 
   const showToast = (type: 'success' | 'error', message: string) => {
     setToast({ type, message, visible: true })
@@ -36,14 +42,14 @@ const Contact = () => {
     
     try {
       // EmailJS configuration (you'll need to set up your EmailJS account)
-      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID
-      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID
-      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+      const serviceId = runtimeCfg.emailjsServiceId
+      const templateId = runtimeCfg.emailjsTemplateId
+      const publicKey = runtimeCfg.emailjsPublicKey
 
       if (
-        typeof serviceId === 'string' && serviceId.length > 0 && !serviceId.startsWith('your_') &&
-        typeof templateId === 'string' && templateId.length > 0 && !templateId.startsWith('your_') &&
-        typeof publicKey === 'string' && publicKey.length > 0 && !publicKey.startsWith('your_')
+        typeof serviceId === 'string' && serviceId.length > 0 &&
+        typeof templateId === 'string' && templateId.length > 0 &&
+        typeof publicKey === 'string' && publicKey.length > 0
       ) {
         // Send email using EmailJS
         await emailjs.send(serviceId as string, templateId as string, {
@@ -263,7 +269,7 @@ const Contact = () => {
                  </div>
                  
                  <motion.a
-                   href={process.env.NEXT_PUBLIC_CALENDLY_URL}
+                   href={runtimeCfg.calendlyUrl || 'https://calendly.com/saifullah-rizw'}
                    target="_blank"
                    rel="noopener noreferrer"
                    whileHover={{ scale: 1.02 }}
