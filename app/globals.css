@@ -1,0 +1,131 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: var(--font-inter), sans-serif;
+  }
+  
+  .font-mono {
+    font-family: var(--font-jetbrains-mono), monospace;
+  }
+}
+
+@layer components {
+  .neon-border {
+    @apply border border-neon-blue shadow-[0_0_10px_rgba(0,245,255,0.5)];
+  }
+  
+  .neon-text {
+    @apply text-neon-blue drop-shadow-[0_0_8px_rgba(0,245,255,0.8)];
+  }
+  
+  .glass-effect {
+    @apply bg-white/10 backdrop-blur-md border border-white/20;
+  }
+  
+  .gradient-text {
+    @apply bg-gradient-to-r from-neon-blue via-neon-purple to-neon-pink bg-clip-text text-transparent;
+  }
+
+  /* Futuristic metallic text */
+  .metallic-text {
+    background-image: linear-gradient(180deg, #e6f7ff 0%, #a3ecff 35%, #7adfff 50%, #a3ecff 65%, #e6f7ff 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Subtle scanline shimmer on text */
+  .scanline-text {
+    position: relative;
+  }
+  .scanline-text::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+    mix-blend-mode: overlay;
+    opacity: 0.4;
+    transform: translateX(-100%);
+    animation: scanline 6s linear infinite;
+    pointer-events: none;
+    border-radius: 4px;
+  }
+
+  @keyframes scanline {
+    0% { transform: translateX(-120%); }
+    100% { transform: translateX(120%); }
+  }
+  
+  .cyber-button {
+    @apply relative px-6 py-3 bg-dark-200 border border-neon-blue text-neon-blue font-mono font-medium
+           hover:bg-neon-blue hover:text-dark-300 transition-all duration-300
+           before:absolute before:inset-0 before:bg-neon-blue before:opacity-0 before:transition-opacity
+           hover:before:opacity-20 before:z-[-1];
+  }
+  
+  .floating-card {
+    @apply bg-dark-200/80 backdrop-blur-sm border border-white/10 rounded-xl
+           hover:border-neon-blue/50 hover:shadow-[0_0_20px_rgba(0,245,255,0.3)]
+           transition-all duration-500 hover:scale-105;
+  }
+}
+
+@layer utilities {
+  .text-shadow {
+    text-shadow: 0 0 10px rgba(0, 245, 255, 0.5);
+  }
+  
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+
+  /* Smooth breathing animation for hero text */
+  .breathe {
+    will-change: transform, opacity;
+    animation: breathe 6s ease-in-out infinite;
+  }
+  @keyframes breathe {
+    0% { transform: scale(1); opacity: 1; }
+    25% { transform: scale(1.01); opacity: 0.98; }
+    50% { transform: scale(1.02); opacity: 0.97; }
+    75% { transform: scale(1.01); opacity: 0.98; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0f0f0f;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #00f5ff;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #00c4cc;
+}
+
+/* Selection color */
+::selection {
+  background: rgba(0, 245, 255, 0.3);
+  color: #ffffff;
+}
