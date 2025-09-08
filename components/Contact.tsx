@@ -2,10 +2,9 @@
 
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
-import { useRef, useState, useEffect } from 'react'
+import { useRef, useState } from 'react'
 import { Mail, Phone, MapPin, Send, Github, Linkedin, Globe, Calendar } from 'lucide-react'
 import emailjs from '@emailjs/browser'
-import { loadRuntimeConfig } from '@/lib/runtimeConfig'
 
 const Contact = () => {
   const ref = useRef(null)
@@ -18,11 +17,12 @@ const Contact = () => {
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [toast, setToast] = useState<{ type: 'success' | 'error'; message: string; visible: boolean }>({ type: 'success', message: '', visible: false })
-  const [runtimeCfg, setRuntimeCfg] = useState<{ emailjsServiceId?: string; emailjsTemplateId?: string; emailjsPublicKey?: string; calendlyUrl?: string }>({})
 
-  useEffect(() => {
-    loadRuntimeConfig().then(setRuntimeCfg).catch(() => setRuntimeCfg({}))
-  }, [])
+  // Injected directly for static hosting
+  const EMAILJS_SERVICE_ID = 'service_1bkfawp'
+  const EMAILJS_TEMPLATE_ID = 'template_oowdhua'
+  const EMAILJS_PUBLIC_KEY = 'BJJ1AFupbzJFt5zx2'
+  const CALENDLY_URL = 'https://calendly.com/saifullah-rizw'
 
   const showToast = (type: 'success' | 'error', message: string) => {
     setToast({ type, message, visible: true })
@@ -42,9 +42,9 @@ const Contact = () => {
     
     try {
       // EmailJS configuration (you'll need to set up your EmailJS account)
-      const serviceId = runtimeCfg.emailjsServiceId
-      const templateId = runtimeCfg.emailjsTemplateId
-      const publicKey = runtimeCfg.emailjsPublicKey
+      const serviceId = EMAILJS_SERVICE_ID
+      const templateId = EMAILJS_TEMPLATE_ID
+      const publicKey = EMAILJS_PUBLIC_KEY
 
       if (
         typeof serviceId === 'string' && serviceId.length > 0 &&
@@ -269,7 +269,7 @@ const Contact = () => {
                  </div>
                  
                  <motion.a
-                   href={runtimeCfg.calendlyUrl || 'https://calendly.com/saifullah-rizw'}
+                   href={CALENDLY_URL}
                    target="_blank"
                    rel="noopener noreferrer"
                    whileHover={{ scale: 1.02 }}

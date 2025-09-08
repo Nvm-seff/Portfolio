@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import { Inter, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
 import CustomCursor from '@/components/CustomCursor'
-import Script from 'next/script'
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -28,15 +27,6 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className={`${inter.variable} ${jetbrainsMono.variable} font-sans bg-dark-300 text-white antialiased`}>
-        {/* Runtime config for static hosting - edit values below or inject via deployment */}
-        <Script id="runtime-config" type="application/json" strategy="beforeInteractive">
-          {JSON.stringify({
-            emailjsServiceId: 'service_1bkfawp',
-            emailjsTemplateId: 'template_oowdhua',
-            emailjsPublicKey: 'BJJ1AFupbzJFt5zx2',
-            calendlyUrl: 'https://calendly.com/saifullah-rizw'
-          })}
-        </Script>
         <CustomCursor />
         {children}
       </body>
