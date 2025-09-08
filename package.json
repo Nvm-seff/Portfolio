@@ -8,7 +8,6 @@
     "start": "next start",
     "lint": "next lint",
     "clean": "rm -rf .next node_modules",
-    "export": "next export",
     "deploy": "next build && next export"
   },
   "dependencies": {
