@@ -38,6 +38,7 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-dark-300 relative overflow-hidden">
       <AnimatedBackground />
+      {/* custom cursor handled by component in layout */}
       <Navigation />
       
       <motion.div

@@ -63,7 +63,7 @@ const Navigation = () => {
               </motion.button>
             ))}
             <motion.a
-              href="https://drive.google.com/file/d/1kVj3HZa6qqG0skmlVbMDIaAmch_TNap5/view?usp=sharing"
+              href="https://drive.google.com/file/d/1awTvwaen2PLhxo_-e1VO8WH2KNd5GlPs/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}

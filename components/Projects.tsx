@@ -312,7 +312,7 @@ const Projects = () => {
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
-          className="grid lg:grid-cols-2 xl:grid-cols-3 gap-8"
+          className="grid lg:grid-cols-2 xl:grid-cols-3 gap-8 items-stretch"
         >
           {paginatedProjects.map((project) => (
             <motion.div
@@ -320,7 +320,7 @@ const Projects = () => {
               variants={itemVariants}
               initial="hidden"
               animate={isInView ? "visible" : "hidden"}
-              className="floating-card group overflow-hidden"
+              className="floating-card group overflow-hidden flex flex-col h-full"
             >
               {/* Project Image */}
               <div className="relative h-48 bg-gradient-to-br from-dark-200 to-dark-100 overflow-hidden">
@@ -340,7 +340,7 @@ const Projects = () => {
               </div>
 
               {/* Project Content */}
-              <div className="p-6 space-y-4">
+              <div className="p-6 space-y-4 flex flex-col flex-1">
                 <h3 className="text-xl font-bold text-white group-hover:text-neon-blue transition-colors duration-300">
                   {project.title}
                 </h3>
@@ -362,7 +362,7 @@ const Projects = () => {
                 </div>
 
                 {/* Action Buttons */}
-                <div className="flex space-x-3 pt-4">
+                <div className="flex space-x-3 pt-4 mt-auto">
                   <motion.a
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
