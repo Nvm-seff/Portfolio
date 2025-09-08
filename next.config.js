@@ -6,7 +6,7 @@ const nextConfig = {
 
   images: {
     unoptimized: true,
-    domains: ['localhost'], // keep your localhost domain for dev
+    domains: ['localhost'], // keep your localhosts domain for dev
   },
 
   basePath: isProd ? '/Portfolio' : '', // repo name (case-sensitive!)

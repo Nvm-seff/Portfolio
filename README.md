@@ -4,13 +4,13 @@ A modern, cutting-edge professional portfolio for AI/ML Engineers built with Nex
 
 ## ✨ Features
 
-- **🎨 Futuristic Design**: Modern UI with neon accents, glassmorphism effects, and smooth animations
-- **⚡ Next.js 14**: Latest React framework with App Router and TypeScript
-- **📧 EmailJS Integration**: Contact form handling without backend dependencies
-- **🎭 Framer Motion**: Smooth animations and micro-interactions
-- **🎨 Tailwind CSS**: Utility-first CSS framework with custom design system
-- **📱 Responsive**: Mobile-first design that works on all devices
-- **🔧 3D Graphics**: Three.js integration for immersive experiences
-- **📊 Interactive Components**: Animated skill bars, project showcases, and more
-- **📅 Calendly Integration**: Direct meeting scheduling for potential clients
+- **🎨 Futuristic Design**: Modern UI with neon accents, glassmorphism effects, and smooth animations.
+- **⚡ Next.js 14**: Latest React framework with App Router and TypeScript.
+- **📧 EmailJS Integration**: Contact form handling without backend dependencies.
+- **🎭 Framer Motion**: Smooth animations and micro-interactions.
+- **🎨 Tailwind CSS**: Utility-first CSS framework with custom design system.
+- **📱 Responsive**: Mobile-first design that works on all devices.
+- **🔧 3D Graphics**: Three.js integration for immersive experiences.
+- **📊 Interactive Components**: Animated skill bars, project showcases, and more.
+- **📅 Calendly Integration**: Direct meeting scheduling for potential clients.
 
