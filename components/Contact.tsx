@@ -52,31 +52,30 @@ const Contact = () => {
         typeof publicKey === 'string' && publicKey.length > 0
       ) {
         // Send email using EmailJS
-        await emailjs.send(serviceId as string, templateId as string, {
+        const result = await emailjs.send(serviceId as string, templateId as string, {
           name: formData.name,
           email: formData.email,
           title: formData.subject,
           message: formData.message,
           time: new Date().toLocaleString(),
         }, publicKey as string)
+
+        if (!result || (result as any).status !== 200) {
+          throw new Error('Email service returned a non-200 status')
+        }
+
+        setIsSubmitting(false)
+        setFormData({ name: '', email: '', subject: '', message: '' })
+        showToast('success', "Message sent! I'll get back to you soon.")
       } else {
-        // Fallback: open user's email client with prefilled content
-        const mailto = new URL(`mailto:saifullah.rizw@gmail.com`)
-        mailto.searchParams.set('subject', `[Portfolio] ${formData.subject}`)
-        const body = `Hi Saifullah,%0D%0A%0D%0A${encodeURIComponent(formData.message)}%0D%0A%0D%0AFrom: ${encodeURIComponent(formData.name)} (${encodeURIComponent(formData.email)})`
-        mailto.searchParams.set('body', body)
-        window.location.href = mailto.toString()
+        // Email service not configured; show guidance instead of mailto
+        setIsSubmitting(false)
+        showToast('error', 'Direct send unavailable. Please copy email below or use Calendly.')
       }
-      
-      setIsSubmitting(false)
-      setFormData({ name: '', email: '', subject: '', message: '' })
-      
-      // Toast success
-      showToast('success', "Message sent! I'll get back to you soon.")
     } catch (error) {
       console.error('Error sending message:', error)
       setIsSubmitting(false)
-      showToast('error', 'There was an error sending your message. Please try again.')
+      showToast('error', 'There was an error sending your message. Please try again or use the options below.')
     }
   }
 
@@ -279,6 +278,9 @@ const Contact = () => {
                    <Calendar className="w-5 h-5" />
                    <span>Schedule a Meeting</span>
                  </motion.a>
+                 <div className="text-center text-gray-500 text-xs">
+                   Prefer email? Copy: <span className="select-all">saifullah.rizw@gmail.com</span>
+                 </div>
                </div>
             </form>
           </motion.div>
