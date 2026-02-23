@@ -13,4 +13,5 @@ A modern, cutting-edge professional portfolio for AI/ML Engineers built with Nex
 - **🔧 3D Graphics**: Three.js integration for immersive experiences.
 - **📊 Interactive Components**: Animated skill bars, project showcases, and more.
 - **📅 Calendly Integration**: Direct meeting scheduling for potential clients.
+- **🚀 CI/CD Deployment**: Automated deployment to GitHub Pages via GitHub Actions, ensuring that every commit is automatically built and published without manual intervention.
 
